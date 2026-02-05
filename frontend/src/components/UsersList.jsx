@@ -80,9 +80,8 @@ const UsersList = ({ activeChannel }) => {
           <button
             key={user.id}
             onClick={() => startDirectMessage(user)}
-            className={`str-chat__channel-preview-messenger  ${
-              isActive && "!bg-black/20 !hover:bg-black/20 border-l-8 border-purple-500 shadow-lg0"
-            }`}
+            className={`str-chat__channel-preview-messenger  ${isActive && "!bg-black/20 !hover:bg-black/20 border-l-8 border-purple-500 shadow-lg0"
+              }`}
           >
             <div className="flex items-center gap-2 w-full">
               <div className="relative">
@@ -101,9 +100,8 @@ const UsersList = ({ activeChannel }) => {
                 )}
 
                 <CircleIcon
-                  className={`w-2 h-2 absolute -bottom-0.5 -right-0.5 ${
-                    user.online ? "text-green-500 fill-green-500" : "text-gray-400 fill-gray-400"
-                  }`}
+                  className={`w-2 h-2 absolute -bottom-0.5 -right-0.5 ${user.online ? "text-green-500 fill-green-500" : "text-gray-400 fill-gray-400"
+                    }`}
                 />
               </div>
 

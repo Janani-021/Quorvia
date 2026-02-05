@@ -3,6 +3,11 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router";
 import { useStreamChat } from "../hooks/useStreamChat";
 import PageLoader from "../components/PageLoader";
+import { HashIcon, PlusIcon, UsersIcon } from "lucide-react";
+import CustomChannelPreview from "../components/CustomChannelPreview";
+import CustomChannelHeader from "../components/CustomChannelHeader";
+import UsersList from "../components/UsersList";
+import CreateChannelModal from "../components/CreateChannelModal";
 
 import {
   Chat,
