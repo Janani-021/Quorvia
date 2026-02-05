@@ -9,11 +9,10 @@ import {
   useLocation,
   useNavigationType,
   createRoutesFromChildren,
-  matchRoutes
+  matchRoutes,
 } from "react-router-dom";
 import { Toaster } from "react-hot-toast";
 import * as Sentry from "@sentry/react";
-
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 Sentry.init({

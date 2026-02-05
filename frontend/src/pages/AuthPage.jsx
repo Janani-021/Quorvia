@@ -11,7 +11,7 @@ const AuthPage = () => {
             <span className="brand-name">Quorvia</span>
           </div>
 
-          <h1 className="hero-title">Where Work Happens ✨</h1>
+          <h1 className="hero-title">Where Work Happens ✨ </h1>
 
           <p className="hero-subtitle">
             Connect with your team instantly through secure, real-time messaging. Experience
@@ -46,7 +46,7 @@ const AuthPage = () => {
 
       <div className="auth-right">
         <div className="auth-image-container">
-          <img src="pic.png" alt="Team collaboration" className="auth-image" />
+          <img src="/pic.png" alt="Team collaboration" className="auth-image" />
           <div className="image-overlay"></div>
         </div>
       </div>

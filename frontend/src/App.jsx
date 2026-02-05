@@ -16,12 +16,14 @@ const App = () => {
       >
         THROW ERROR
       </button>
+
       <SignedIn>
         <SentryRoutes>
           <Route path="/" element={<HomePage />} />
           <Route path="/auth" element={<Navigate to={"/"} replace />} />
         </SentryRoutes>
       </SignedIn>
+
       <SignedOut>
         <SentryRoutes>
           <Route path="/auth" element={<AuthPage />} />

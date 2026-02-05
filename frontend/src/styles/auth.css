@@ -1,13 +1,12 @@
 .auth-container {
   min-height: 100vh;
   display: flex;
-  /* Strictly grey linear transition as requested */
   background: linear-gradient(
     135deg, 
-    #42424b 0%,    /* Lightest Grey (Top Left) */
-    #2a2a2e 35%,   /* Mid Charcoal */
-    #1b1b1f 70%,   /* Dark Carbon */
-    #121214 100%   /* Deepest Matte Grey (Bottom Right) */
+    #42424b 0%,    
+    #2a2a2e 35%,  
+    #1b1b1f 70%,  
+    #121214 100%   
   );
   position: relative;
   overflow: hidden;
@@ -18,7 +17,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 3rem;
+  padding: 1rem;
   position: relative;
 }
 
@@ -29,7 +28,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
+  padding: 1rem;
 }
 
 .auth-hero {
@@ -60,7 +59,7 @@
 }
 
 .brand-name {
-  font-size: 3.5rem;
+  font-size: 2.5rem;
   font-weight: 700;
   font-family: "Monaco", monospace;
   letter-spacing: 0.1em;
@@ -181,19 +180,21 @@
 
 .auth-image-container {
   position: relative;
-  width: 480px;      /* Set a fixed width or 100% of parent */
-  height: 600px;     /* Set a fixed height to match your max-height */
+  max-width: 480px;
+  max-height: 600px;
+  width: 100%;
   border-radius: 2rem;
   overflow: hidden;
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 30px 60px rgba(74, 21, 75, 0.25), 0 15px 30px rgba(0, 0, 0, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
   animation: float 6s ease-in-out infinite;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(116, 58, 213, 0.2);
 }
 
 .auth-image {
   width: 100%;
-  height: 100%;      /* Changed from auto to 100% to fill the box */
-  object-fit: cover; /* This ensures it crops to fill without stretching */
+  height: auto;
+  object-fit: cover;
   object-position: center;
   display: block;
 }
