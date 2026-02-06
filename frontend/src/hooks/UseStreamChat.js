@@ -29,13 +29,18 @@ export const useStreamChat = () => {
   // init stream chat client
   // init stream chat client
   useEffect(() => {
-    if (!tokenData?.token || !user?.id || !STREAM_API_KEY) return;
+    console.log("useStreamChat: Checking conditions", { token: !!tokenData?.token, userId: !!user?.id, apiKey: !!STREAM_API_KEY });
+    if (!tokenData?.token || !user?.id || !STREAM_API_KEY) {
+      console.log("useStreamChat: Missing required data", { token: !!tokenData?.token, userId: !!user?.id, apiKey: !!STREAM_API_KEY });
+      return;
+    }
 
     const client = StreamChat.getInstance(STREAM_API_KEY);
     let cancelled = false;
 
     const connect = async () => {
       try {
+        console.log("useStreamChat: Connecting user to Stream Chat");
         await client.connectUser(
           {
             id: user.id,
@@ -46,6 +51,7 @@ export const useStreamChat = () => {
           tokenData.token
         );
         if (!cancelled) {
+          console.log("useStreamChat: Successfully connected to Stream Chat");
           setChatClient(client);
         }
       } catch (error) {

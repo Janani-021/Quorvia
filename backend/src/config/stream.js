@@ -1,6 +1,10 @@
 import { StreamChat } from "stream-chat";
 import { ENV } from "../config/env.js";
 
+if (!ENV.STREAM_API_KEY || !ENV.STREAM_API_SECRET) {
+  throw new Error("STREAM_API_KEY and STREAM_API_SECRET must be set in environment variables");
+}
+
 const streamClient = StreamChat.getInstance(ENV.STREAM_API_KEY, ENV.STREAM_API_SECRET);
 
 export const upsertStreamUser = async (userData) => {

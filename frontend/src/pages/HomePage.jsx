@@ -1,6 +1,6 @@
 import { UserButton } from "@clerk/clerk-react";
 import { useEffect, useState } from "react";
-import { useSearchParams } from "react-router";
+import { useSearchParams } from "react-router-dom";
 import { useStreamChat } from "../hooks/useStreamChat";
 import PageLoader from "../components/PageLoader";
 import { HashIcon, PlusIcon, UsersIcon } from "lucide-react";
@@ -40,7 +40,7 @@ const HomePage = () => {
   }, [chatClient, searchParams]);
 
   // todo: handle this with a better component
-  if (error) return <p>Something went wrong...</p>;
+  if (error) return <p>Something went wrong: {error.message || "Unable to connect to chat service"}</p>;
   if (isLoading || !chatClient) return <PageLoader />;
 
   return (
@@ -101,7 +101,7 @@ const HomePage = () => {
                           <span>Direct Messages</span>
                         </div>
                       </div>
-                      <UsersList activeChannel={activeChannel} />
+                      <UsersList activeChannel={activeChannel} onChannelSelect={(channel) => setSearchParams({ channel: channel.id })} />
                     </div>
                   )}
                 />
@@ -111,15 +111,24 @@ const HomePage = () => {
 
           {/* RIGHT CONTAINER */}
           <div className="chat-main">
-            <Channel channel={activeChannel}>
-              <Window>
-                <CustomChannelHeader />
-                <MessageList />
-                <MessageInput />
-              </Window>
+            {activeChannel ? (
+              <Channel channel={activeChannel}>
+                <Window>
+                  <CustomChannelHeader />
+                  <MessageList />
+                  <MessageInput />
+                </Window>
 
-              <Thread />
-            </Channel>
+                <Thread />
+              </Channel>
+            ) : (
+              <div className="no-channel-selected">
+                <div className="welcome-message">
+                  <h2>Welcome to Quorvia!</h2>
+                  <p>Select a channel from the sidebar to start chatting, or create a new channel.</p>
+                </div>
+              </div>
+            )}
           </div>
         </div>
 
