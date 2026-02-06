@@ -31,7 +31,9 @@ const CustomChannelHeader = () => {
 
   const handleVideoCall = async () => {
     if (channel) {
-      const callUrl = `${window.location.origin}/call/${channel.id}`;
+      // Generate a unique call ID to avoid conflicts
+      const callId = `call_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+      const callUrl = `${window.location.origin}/call/${callId}`;
       await channel.sendMessage({
         text: `I've started a video call. Join me here: ${callUrl}`,
       });
