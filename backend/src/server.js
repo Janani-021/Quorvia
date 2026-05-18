@@ -33,18 +33,20 @@ Sentry.setupExpressErrorHandler(app);
 const startServer = async () => {
   try {
     await connectDB();
-    // Render starts the app in production; ensure the server always listens.
-    app.listen(ENV.PORT, () => {
-      console.log("Server started on port:", ENV.PORT);
-    });
-
   } catch (error) {
-    console.error("Error starting server:", error);
-    process.exit(1); // Exit the process with a failure code
+    // On platforms like Render, missing env/DB during startup can prevent the app from binding any port,
+    // which triggers port-scan failures. Log and keep the server listening.
+    console.error("Mongo connection failed (server will still start):", error);
   }
+
+  const port = ENV.PORT;
+  app.listen(port, () => {
+    console.log("Server started on port:", port);
+  });
 };
 
 startServer();
 
 export default app;
+
 
