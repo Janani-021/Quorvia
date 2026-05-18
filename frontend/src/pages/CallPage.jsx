@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useParams, useNavigate } from "react-router";
+import { useParams, useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { useUser } from "@clerk/clerk-react";
 import toast from "react-hot-toast";
@@ -86,7 +86,7 @@ const CallPage = () => {
           apiKey: STREAM_API_KEY,
           user: {
             id: user.id,
-            name: user.fullName,
+            name: user.fullName ?? user.username ?? user.primaryEmailAddress?.emailAddress ?? user.id,
             image: user.imageUrl,
           },
           token: tokenData.token,

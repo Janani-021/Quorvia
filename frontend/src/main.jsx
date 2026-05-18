@@ -20,7 +20,6 @@ if (!PUBLISHABLE_KEY) {
   throw new Error("Missing Publishable Key");
 }
 
-// Initialize Sentry without router integration to avoid hook errors
 Sentry.init({
   dsn: import.meta.env.VITE_SENTRY_DSN,
   integrations: [
